@@ -1,23 +1,35 @@
 = DESCRIPTION:
 
-Uses the Chef configuration management tool, specifically chef-solo to configure a remote server.  This is the simplest way to get started with using Chef.
+Uses the Chef configuration management tool, specifically chef-solo to
+configure a remote server. This is the simplest way to get started with
+using Chef.
 
 = REQUIREMENTS:
 
-* Make sure Chef is installed on the remote server you want to configure.  See chef_bootstrap.rb to help.
-* Modify config/chef.json to specify the recipes from the 'cookbooks' dir you want to run
-* Run with 'rake cook server=username@host.domain.com'
+* Adjust your ~/.ssh/config like the example in the ssh_config file. You
+  will have to adjust the location of the identity file.
+* Make sure Chef is installed on the remote server you want to
+  configure. See chef_bootstrap_amazon_linux_ami.sh to help.
+* Modify config/chef.json to specify the recipes from the 'cookbooks'
+  dir you want to run
+* Run with 'rake cook server=host.domain.com'
 
 = HOW IT WORKS:
 
 When you run the 'rake cook' task it will:
 
-* rsync this entire directory to the location specified in 'REMOTE_CHEF_PATH' in the Rakefile
-* Run chef-solo on the remote machine using the config files in config/ and your cookbooks.
-* Run the 'test' recipe which creates the dir '/tmp/foobarbaz' on the remote machine.
+* rsync this entire directory to the location specified in
+  'REMOTE_CHEF_PATH' in the Rakefile
+* Run chef-solo on the remote machine using the config files in config/
+  and your cookbooks.
+* Run the 'test' recipe which creates the dir '/tmp/foobarbaz' on the
+  remote machine.
 * Sprinkles magic dust on your server...
 
 = CREDITS:
 
-Most of the ideas and code here was cribbed from http://probablyinteractive.com/2009/3/29/Amazon%20EC2%20+%20Chef%20=%20Mmmmm.html.  Just updated to match my understanding of the most recent config.  My thanks to the author for giving me an excellent headstart.
+Most of the ideas and code here was cribbed from
+http://probablyinteractive.com/2009/3/29/Amazon%20EC2%20+%20Chef%20=%20Mmmmm.html.
+Just updated to match my understanding of the most recent config. My
+thanks to the author for giving me an excellent headstart.
 
